@@ -33,7 +33,7 @@ public class CryptObj {
 	            String s = new String(Base64.getEncoder().encode(encrypted));
 	            return s;
         } catch (Exception ex) {
-            ex.printStackTrace();
+            	ex.printStackTrace();
         }
         return null;
     }
@@ -42,18 +42,18 @@ public class CryptObj {
     	
         try {
         	
-        	byte[] b = new byte[16];
-        	b = Arrays.copyOf(key.getBytes(), 16);            
-
-            Cipher cipher = Cipher.getInstance("Blowfish");
-            SecretKeySpec skeySpec = new SecretKeySpec(b, "Blowfish");
-            cipher.init(Cipher.DECRYPT_MODE, skeySpec);
-
-            byte[] original = cipher.doFinal(Base64.getDecoder().decode(encrypted));
-
-            return new String(original);
+	        	byte[] b = new byte[16];
+	        	b = Arrays.copyOf(key.getBytes(), 16);            
+	
+	            Cipher cipher = Cipher.getInstance("Blowfish");
+	            SecretKeySpec skeySpec = new SecretKeySpec(b, "Blowfish");
+	            cipher.init(Cipher.DECRYPT_MODE, skeySpec);
+	
+	            byte[] original = cipher.doFinal(Base64.getDecoder().decode(encrypted));
+	
+	            return new String(original);
         } catch (Exception ex) {
-            ex.printStackTrace();
+            	ex.printStackTrace();
         }
 
         return null;
@@ -64,13 +64,13 @@ public class CryptObj {
     public static String sha1(String value) {
     	
     	try {
-			MessageDigest sha = MessageDigest.getInstance("SHA-1");
-			sha.reset();
-			sha.update(value.getBytes());
-			return byteToHex(sha.digest());
+				MessageDigest sha = MessageDigest.getInstance("SHA-1");
+				sha.reset();
+				sha.update(value.getBytes());
+				return byteToHex(sha.digest());
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+				e.printStackTrace();
 		}
     	
     	return null;
@@ -83,9 +83,9 @@ public class CryptObj {
         {
             formatter.format("%02x", b);
         }
-        String result = formatter.toString();
-        formatter.close();
-        return result;
+	        String result = formatter.toString();
+	        formatter.close();
+	        return result;
     }
     
 	
